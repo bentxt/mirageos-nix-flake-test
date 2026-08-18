@@ -1,4 +1,12 @@
-.PHONY: clean
+.PHONY: all build run clean
+
+all: build
+
+build:
+	./run.sh build
+
+run:
+	./run.sh run
 
 clean:
 	rm -rf -- \

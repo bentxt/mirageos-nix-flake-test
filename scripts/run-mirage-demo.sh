@@ -4,9 +4,18 @@ set -euo pipefail
 
 project_root="$(cd "$(dirname "$0")/.." && pwd)"
 app_dir="$project_root/mirageapp"
+action="${1:-run}"
 opam_root="${MIRAGE_OPAM_ROOT:-/tmp/flaketest-mirage-opam-root}"
 switch_name="${MIRAGE_OPAM_SWITCH:-mirage-4.10}"
 ocaml_version="${MIRAGE_OCAML_VERSION:-4.14.2}"
+
+case "$action" in
+  build|run) ;;
+  *)
+    echo "Usage: $0 [build|run]" >&2
+    exit 2
+    ;;
+esac
 
 case "$(uname -s)" in
   Darwin) target="macosx" ;;
@@ -37,5 +46,9 @@ if [[ ! -f "$lock_file" || -z "$vendored_project" ]]; then
 fi
 
 make build
+
+if [[ "$action" == build ]]; then
+  exit 0
+fi
 
 exec ./dist/hello
