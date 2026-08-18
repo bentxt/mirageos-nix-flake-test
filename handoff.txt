@@ -2,7 +2,7 @@ MIRAGEOS/NIX PROJECT HANDOFF
 ============================
 
 Date: 2026-08-19
-Workspace: /Volumes/t7sams2tb01/ben_boxdir_t7sams2tb01/syncbox_cloud/HomeWork/flaketest/flaketest
+Workspace: ~/flaketest/flaketest
 
 USER INTERACTION
 ----------------
